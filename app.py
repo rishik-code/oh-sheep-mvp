@@ -62,10 +62,26 @@ def inject_custom_css():
         a:hover { text-decoration: underline !important; }
 
         /* INPUT BOXES & FORMS */
-        div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="textarea"], .stNumberInput div {
-            background-color: #FFFFFF !important; border-radius: 8px !important; border: 1px solid #E5E7EB !important; box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+        /* INPUT BOXES & FORMS */
+        div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="textarea"] {
+            background-color: #FFFFFF !important; 
+            border-radius: 8px !important; 
+            border: 1px solid #E5E7EB !important; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
         }
         [data-testid="stForm"] { background-color: #FFFFFF !important; border: 1px solid #E5E7EB !important; border-radius: 12px !important; }
+        
+        /* FIX FOR DROPDOWN MENUS (POPOVERS) */
+        [data-baseweb="popover"], [data-baseweb="menu"] { 
+            background-color: #FFFFFF !important; 
+        }
+        li[role="option"] { 
+            background-color: #FFFFFF !important; 
+            color: #1F2937 !important; 
+        }
+        li[role="option"]:hover { 
+            background-color: #F9FAFB !important; 
+        }
 
         /* NUMBER INPUT +/- BUTTON FIX */
         button[kind="stepUp"], button[kind="stepDown"] { background-color: #F3F4F6 !important; }
