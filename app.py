@@ -5,6 +5,7 @@ import json
 import os
 from dotenv import load_dotenv
 from cities import iata_codes, destination_images
+import urllib.parse
 
 # 👇 NEW CACHE FUNCTION: Loads data once and keeps it in memory!
 @st.cache_data
@@ -62,12 +63,12 @@ def inject_custom_css():
         a:hover { text-decoration: underline !important; }
 
         /* INPUT BOXES & FORMS */
-        /* INPUT BOXES & FORMS */
-        div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="textarea"] {
+        div[data-testid="stTextInput"] div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="textarea"] {
             background-color: #FFFFFF !important; 
             border-radius: 8px !important; 
             border: 1px solid #E5E7EB !important; 
             box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+        }
         }
         [data-testid="stForm"] { background-color: #FFFFFF !important; border: 1px solid #E5E7EB !important; border-radius: 12px !important; }
         
@@ -83,10 +84,20 @@ def inject_custom_css():
             background-color: #F9FAFB !important; 
         }
 
-        /* NUMBER INPUT +/- BUTTON FIX */
-        button[kind="stepUp"], button[kind="stepDown"] { background-color: #F3F4F6 !important; }
-        button[kind="stepUp"] svg, button[kind="stepDown"] svg { fill: #1F2937 !important; }
-
+        /* NUMBER INPUT +/- BUTTON RESTORATION (Bulletproof) */
+        div[data-testid="stNumberInput"] button { 
+            background-color: #F3F4F6 !important; 
+            color: #1F2937 !important;
+            border-radius: 6px !important;
+            transition: all 0.2s ease-in-out;
+        }
+        div[data-testid="stNumberInput"] button:hover { 
+            background-color: #E5E7EB !important; 
+        }
+        div[data-testid="stNumberInput"] button svg { 
+            fill: #1F2937 !important; 
+        }
+        
         /* EXPANDER HEADER FIX */
         [data-testid="stExpander"] { background-color: #FFFFFF !important; border: 1px solid #E5E7EB !important; border-radius: 12px !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important; }
         [data-testid="stExpander"] summary, [data-testid="stExpander"] summary p, [data-testid="stExpander"] summary span, [data-testid="stExpander"] summary svg {
@@ -168,8 +179,9 @@ def get_rk_itinerary(user_request, expert_data):
        
     2. 🔗 **Quick Booking Dashboard:** Immediately after the summary, create a clean list of links.
        **✈️ Flights:** <a href="{f_url}" target="_blank">Check Flights to {user_request["destination"]}</a>
-       **🏨 Hotels:** <a href="https://www.stay22.com/allez/go?aid={STAY22_AID}&address=[CITY_A]+{user_request["style"]}+hotel" target="_blank">Curated Stays in [CITY_A]</a>
-    
+       **🏨 Hotels:** Generate a dedicated booking link for EVERY city mentioned in your Route Summary using this exact format:
+       - <a href="https://www.stay22.com/allez/go?aid={STAY22_AID}&address=[INSERT_CITY_NAME_HERE]+{user_request["style"]}+hotel" target="_blank">Curated Stays in [INSERT_CITY_NAME_HERE]</a>
+       
     3. 📅 **The Daily Breakdown:** For each day, start with the exact text "### Day [Number]: [City Name]". 
        - 🏨 **The Local Stay:** If this is the FIRST day arriving in a new city, insert the hotel link.
        - 🌅 **Morning:** [2 activities max. Make cafe name a clickable Google Maps link]
@@ -338,7 +350,7 @@ if st.session_state.itinerary:
                         if not (consent and user_email and mobile):
                             st.error("Please fill in all details and check the consent box.")
                         else:
-                            nl = "%0D%0A"
+                            nl = "\r\n"
                             subject = f"Oh Sheep! Request: {destination} ({travel_month})"
                             
                             email_origin = form_origin_custom if form_origin_dropdown == "🌍 Other (Type in the Form Below)" else form_origin_dropdown
@@ -392,7 +404,11 @@ if st.session_state.itinerary:
                                 f"- Mobile: {mobile}"
                             )
 
-                            st.session_state.mailto_url = f"mailto:rnktrips@gmail.com?subject={subject.replace(' ', '%20')}&body={email_body.replace(' ', '%20')}"
+                            # 4. Safely encode the text for the web browser
+                            safe_subject = urllib.parse.quote(subject)
+                            safe_body = urllib.parse.quote(email_body)
+
+                            st.session_state.mailto_url = f"mailto:rnktrips@gmail.com?subject={safe_subject}&body={safe_body}"
                             st.session_state.request_prepped = True
                             st.rerun()
 
