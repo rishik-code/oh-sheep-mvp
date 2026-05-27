@@ -1,0 +1,43 @@
+[
+    {
+      "city": "Paris",
+      "style": "Budget",
+      "pro_tip": "Book the tickets for the Catacomb experience as soon as you can, it's a popular attraction and ticksts are often sold out.",
+      "local_secret": "The best view of the Eiffel Tower isn't Trocadero, it's the rooftop of Galeries Lafayette."
+    },
+    {
+      "city": "Rome",
+      "pro_tip": "Avoid restaurants with pictures of food on the menu outside.",
+      "local_secret": "Trevi Fountain is best seen before 8.30 AM or after 12 AM where you could actually marvel the architecture without the crowds."
+    },
+    {
+      "city": "London",
+      "pro_tip": "The British Museum, Natural History Museum, Science Museum, Victoria and Albert Museum (V&A), Tate Modern, and the National Gallery are free to vist",
+      "local_secret": "Take a boat trip on the Thames River from Westminster to Greenwich for a stunning view of the city and to know more about the history of the city."
+    },
+    {
+      "city": "Barcelona",
+      "pro_tip": "Do not stay in the Gothic Quarter, while it's beautiful, it's very expensive, crowded and has risks of pickpockets.",
+      "local_secret": "The cheaper way to see Gaudi's magic is to visit park Güell but you need to book the tickets in advance. Go inside Sagrada Familia in the evening (check closing times) to see it light up with the evening sun."
+    },
+    {
+      "city": "Amsterdam",
+      "pro_tip": "Take an evening boat trip at sunset to see the city from the canals and see the magic of the lights on the bridges.",
+      "local_secret": "Take a half day trip to Zandvoort for a day of surfing and sandboarding or to just to chill by the beach. Visit the Vondelpark to relax and enjoy the nature in a Dutch style."
+    },
+    {
+      "city": "Prague",
+      "pro_tip": "Visit the Charles Bridge in the morning to avoid the crowds and get a better view of the city.",
+      "local_secret": "Try out the Budweiser or the local beers or go to fancy cocktail bars. Or just walk by the river and cross the bridges at night so see the city lights"
+    },
+    {
+      "city": "Vienna",
+      "pro_tip": "Visit the Schönbrunn Palace and the Belvedere Palace to see the historic buildings and the city's main square.",
+      "local_secret": "Attend a Vivaldi concert in a church and appreciate the accoustics. Eat a wurst at a local sandwich stall"
+    },
+    {
+      "city": "Budapest",
+      "pro_tip": "Keep half a day to go to the thermal baths, carry swimsuit and towels to not shell extra money. Do not opt for the massages as they aren't great. Stay on the Pest side of the river for cheaper accomodation, it's easy to get by the river and to the city center.",
+      "local_secret": "In the evening, visit the ruin bars for an unforgettable experience. Take the tram running by Danube on the Buda side for a stunning view of the city."
+    }
+  ]

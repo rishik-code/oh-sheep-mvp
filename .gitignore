@@ -1,0 +1,15 @@
+# Security
+.env
+
+# Virtual Environments
+venv/
+env/
+
+# Temporary State & Memory
+__pycache__/
+*.pyc
+.email_bookmark.txt
+drafts/
+
+# Mac OS System Files
+.DS_Store
