@@ -1,0 +1,16 @@
+[theme]
+# Force Streamlit to use a Light Mode baseline
+base="light"
+
+# The "Ocean Blue" for primary actions and highlights
+primaryColor="#0284C7"
+
+# The "Airy and Light" background for the whole page
+backgroundColor="#F9FAFB"
+
+# Pure white for the sidebars, expanders, and inputs
+secondaryBackgroundColor="#FFFFFF"
+
+# Premium Dark Slate for all text
+textColor="#1F2937"
+font="sans serif"
