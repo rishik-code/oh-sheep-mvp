@@ -367,13 +367,15 @@ if st.session_state.itinerary:
 
                             email_notes = user_notes if user_notes else "No additional notes provided."
 
+                            
                             # 3. Build the Ultimate Email Body (Captures absolutely everything)
                             email_body = (
                                 f"🚨 OH SHEEP! PREMIUM TRIP REQUEST 🚨{nl}{nl}"
                                 f"✈️ THE BASICS{nl}"
                                 f"- From: {email_origin}{nl}"
                                 f"- To: {destination}{nl}"
-                                f"- When: {travel_month} (for {days} days){nl}{nl}"
+                                f"- When: {travel_month} (for {days} days){nl}"
+                                f"- Style: {style}{nl}{nl}"  # <--- THIS IS THE MISSING LINE!
                                 f"👥 THE FLOCK{nl}"
                                 f"- Group Style: {group}{nl}"
                                 f"- Adults: {adults}{nl}"
