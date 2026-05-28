@@ -21,7 +21,7 @@ def init_ai_brain():
     api_key = os.getenv("GEMINI_API_KEY")
     if api_key:
         genai.configure(api_key=api_key)
-        return genai.GenerativeModel("models/gemini-3-flash-preview")
+        return genai.GenerativeModel("models/gemini-2.5-flash")
     return None
 
 gemini_model = init_ai_brain()
